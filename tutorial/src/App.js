@@ -5,6 +5,7 @@ import Users from './components/Users';
 
 import {Provider} from "react-redux";
 import store from './redux/store';
+import Cake from './components/Cake';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Counter />
         <Number />
         <Users />
+        <Cake />
       </div>
     </Provider>
   );
