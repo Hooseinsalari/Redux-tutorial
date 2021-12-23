@@ -6,6 +6,7 @@ import Users from './components/Users';
 import {Provider} from "react-redux";
 import store from './redux/store';
 import Cake from './components/Cake';
+import Name from './components/Name';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Number />
         <Users />
         <Cake />
+        <Name/>
       </div>
     </Provider>
   );
