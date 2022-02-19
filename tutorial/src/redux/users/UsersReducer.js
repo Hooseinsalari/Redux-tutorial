@@ -1,5 +1,5 @@
 const initialState = {
-    loading: false,
+    isLoading: false,
     users: [],
     error: ""
 }
@@ -9,21 +9,23 @@ const usersReducer = (state=initialState, action) => {
         case "FETCH_USERS_REQUEST":
             return {
                 ...state,
-                loading: true
+                isLoading: true
             }
         case "FETCH_USERS_SUCCESS":
             return {
-                loading: false,
-                users: action.payload
+                isLoading: false,
+                users: action.payload,
+                error: ""
             }
-        case "FETCH_USERS_FAILURE":
-            return{
-                loading: false,
+        case "FETCH_USERS_FAILURE": 
+            return {
+                isLoading: false,
                 users: [],
                 error: action.payload
             }
         default:
             return state
+        
     }
 }
 

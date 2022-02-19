@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-
-import { fetchUsers } from '../redux/users/UsersAction';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUsers } from '../redux/users/usersActions';
 
 const Users = () => {
-    const userData = useSelector(state => state.usersState)
+
+    const usersState = useSelector(state => state.usersState)
+
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -14,11 +15,10 @@ const Users = () => {
     return (
         <div>
             {
-                userData.loading ? 
-                    <h1>Loading...</h1>:
-                    userData.error ?
-                        <h2>{userData.error}</h2>:
-                        userData.users.map((user) => <p key={user.id}>{user.name}</p>)
+                usersState.isLoading ?
+                <h1>Loading...</h1> :
+                usersState.users.length ? usersState.users.map((user) => <h2 key={user.id}>{user.name}</h2>)
+                : <h1>{usersState.error}</h1>
             }
         </div>
     );

@@ -1,27 +1,37 @@
 import React, { useState } from 'react';
+import { increase } from '../redux/counter/counterActions';
+import { decrease } from '../redux/counter/counterActions';
+import {useDispatch, useSelector} from "react-redux"
 
-// Action
-import { increaseCounter } from '../redux/counter/CounterAction';
-import { decreaseCounter } from '../redux/counter/CounterAction';
-
-// hooks
-import { useSelector, useDispatch } from 'react-redux';
-
-const Counter = () => {
+const Counter = (props) => {
     const [value, setValue] = useState(1)
 
-    const counter = useSelector((state) => state.counterState.counter)
-    const dispatch = useDispatch();
+    const counter = useSelector((state) => state.counter.counter)
+    const dispatch = useDispatch()
 
     return (
         <div>
             <h1>Counter - {counter}</h1>
-            <input type="text" value={value} onChange={(event) => setValue(event.target.value)} />
-            <button onClick={() => dispatch(increaseCounter(+value))}>Up</button>
-            <button onClick={() => dispatch(decreaseCounter(+value))}>Down</button>
+            <input type="number" value={value} onChange={(event) => setValue(event.target.value) } />
+            <button onClick={() => dispatch(increase(+value))}>increase</button>
+            <button onClick={() => dispatch(decrease(+value))}>decrease</button>
         </div>
     );
 };
+
+
+// const mapStateToProps = (state) => {
+//     return {
+//         counter: state.counter
+//     }
+// }
+
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         increase: () => dispatch(increase()),
+//         decrease: () => dispatch(decrease()) 
+//     }
+// }
 
 
 export default Counter;

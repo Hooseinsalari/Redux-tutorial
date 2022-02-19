@@ -1,21 +1,20 @@
 import React from 'react';
 
-import { useSelector, useDispatch } from 'react-redux';
-
-// Action
-import { increaseNumber } from '../redux/number/NumberAction';
-import { decreaseNumber } from '../redux/number/NumberAction';
+import { useDispatch, useSelector } from 'react-redux';
+import { increase } from '../redux/number/numberActions';
+import { decrease } from '../redux/number/numberActions';
 
 const Number = () => {
 
-    const number = useSelector(state => state.numberState.number)
+    const number = useSelector(state => state.number.number)
+
     const dispatch = useDispatch()
 
     return (
         <div>
-            <h1>Number - {number}</h1>
-            <button onClick={() => dispatch(increaseNumber())}>increase</button>
-            <button onClick={() => dispatch(decreaseNumber())}>decrease</button>
+            <h1>Counter - {number}</h1>
+            <button onClick={() => dispatch(increase())}>increase</button>
+            <button onClick={() => dispatch(decrease())}>decrease</button>
         </div>
     );
 };

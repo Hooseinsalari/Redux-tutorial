@@ -1,17 +1,12 @@
 import { combineReducers } from "redux";
+import counterReducer from "./counter/counterReducer";
+import numberReducer from "./number/numberReducer";
+import usersReducer from "./users/usersReducer";
 
-import counterReducer from "./counter/CounterReducer";
-import numberReducer from "./number/NumberReducer";
-import usersReducer from "./users/UsersReducer";
-import cakeReducer from "./cake/CakeReducer";
-import nameReducer from "./name/NameReducer";
-
-const rootReducer = combineReducers({
-    numberState: numberReducer,
-    counterState: counterReducer,
-    usersState: usersReducer,
-    cakeState: cakeReducer,
-    nameState: nameReducer
+const rootRaducer = combineReducers({
+    counter: counterReducer,
+    number: numberReducer,
+    usersState: usersReducer
 })
 
-export default rootReducer;
+export default rootRaducer;
